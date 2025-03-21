@@ -131,7 +131,7 @@ class SegmentationMapsOnImage(IAugmentable):
             if arr.ndim == 2:
                 arr = arr[..., np.newaxis]
         elif arr.dtype.kind in ["i", "u"]:
-            if arr.shape[2] > 0:
+            if arr.ndim > 2 and arr.shape[2] > 0:
                 assert (
                     np.min(arr.flat[0:100]) >= 0
                 ), "Expected segmentation map array to only contain values >=0, " "got a minimum of %d." % (
